@@ -16,7 +16,7 @@ export default function PayPalButton() {
               {
                 description: "Your description",
                 amount: {
-                  currency_code: "INR",
+                  currency_code: "USD",
                   value: 500.0,
                 },
               },
@@ -49,7 +49,7 @@ export default function PayPalButton() {
   // Default Render
   return (
     <div>
-      <h4>Total Amount in Rs. : 500 /-</h4>
+      <h4>Total Amount in USD. : 500 /-</h4>
       <div ref={paypalRef} />
     </div>
   );
