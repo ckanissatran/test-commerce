@@ -1,27 +1,56 @@
-
-const PayPalBtn = paypal.Buttons.driver("react", { React, ReactDOM });
+import React from 'react'
 
 export default function PayPalButton() {
-  const createOrder = (data, actions) =>{
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: "100.50",
-          },
+  const [paid, setPaid] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const paypalRef = React.useRef();
+
+  // To show PayPal buttons once the component loads
+  React.useEffect(() => {
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: "Your description",
+                amount: {
+                  currency_code: "INR",
+                  value: 500.0,
+                },
+              },
+            ],
+          });
         },
-      ],
-    });
-  };
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          setPaid(true);
+          console.log(order);
+        },
+        onError: (err) => {
+        //   setError(err),
+          console.error(err);
+        },
+      })
+      .render(paypalRef.current);
+  }, []);
 
-  const onApprove = (data, actions) => {
-    return actions.order.capture();
-  };
+  // If the payment has been made
+  if (paid) {
+    return <div>Payment successful.!</div>;
+  }
 
+  // If any error occurs
+  if (error) {
+    return <div>Error Occurred in processing payment.! Please try again.</div>;
+  }
+
+  // Default Render
   return (
-    <PayPalBtn
-      createOrder={(data, actions) => createOrder(data, actions)}
-      onApprove={(data, actions) => onApprove(data, actions)}
-    />
+    <div>
+      <h4>Total Amount in Rs. : 500 /-</h4>
+      <div ref={paypalRef} />
+    </div>
   );
 }
