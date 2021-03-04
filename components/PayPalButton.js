@@ -29,7 +29,7 @@ export default function PayPalButton() {
           console.log(order);
         },
         onError: (err) => {
-        //   setError(err),
+          setError(err),
           console.error(err);
         },
       })
@@ -47,10 +47,6 @@ export default function PayPalButton() {
   }
 
   // Default Render
-  return (
-    <div>
-      <h4>Total Amount in USD. : 500 /-</h4>
-      <div ref={paypalRef} />
-    </div>
-  );
+  return <div ref={paypalRef} />
+ 
 }
