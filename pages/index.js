@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 import PayPalButton from '../components/PayPalButton'
 import React from 'react'
 
-
 export default function Home() {
   const [sdkReady, setSdkReady] = React.useState(false);
 
@@ -25,12 +24,11 @@ export default function Home() {
   };
 
   React.useEffect(() => {
-    if (window !== undefined && window.paypal === undefined) {
       addPaypalSdk();
-    }
-    return () => {
-      document.body.removeChild(script);
-    }  
+
+      return () => {
+        document.body.removeChild(script);
+      }  
   }, [])
 
   return (

@@ -10,7 +10,6 @@ export default function Programs() {
       script.type = 'text/javascript';
       script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_CLIENT_ID}&vault=true&intent=subscription`;
       script.async = true;
-    //   script.dataSdkIntegrationSource = "button-factory";
       script.onload = () => {
         setSdkReady(true);
       };
@@ -22,12 +21,10 @@ export default function Programs() {
     };
   
     React.useEffect(() => {
-      if (window !== undefined && window.paypal === undefined) {
         addPaypalSdk();
-      }
-      return () => {
-        document.body.removeChild(script);
-      }      
+        return () => {
+            document.body.removeChild(script);
+        }      
     }, [])
 
     return (<>
