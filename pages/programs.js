@@ -8,7 +8,7 @@ export default function Programs() {
     const addPaypalSdk = () => {
       const script = document.createElement('script');
       script.type = 'text/javascript';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.CLIENT_ID}&vault=true&intent=subscription`;
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_CLIENT_ID}&vault=true&intent=subscription`;
       script.async = true;
     //   script.dataSdkIntegrationSource = "button-factory";
       script.onload = () => {

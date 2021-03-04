@@ -11,7 +11,7 @@ export default function Home() {
     console.log("&&&&HEY", process.env.CLIENT_ID)
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.CLIENT_ID}`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_CLIENT_ID}`;
     script.async = true;
     script.onload = () => {
       setSdkReady(true);
