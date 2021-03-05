@@ -6,8 +6,7 @@ import React from 'react'
 export default function Home() {
   const [sdkReady, setSdkReady] = React.useState(false);
 
-  const addPaypalSdk = () => {
-    console.log("&&&&HEY", process.env.CLIENT_ID)
+  React.useEffect(() => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_CLIENT_ID}`;
@@ -19,16 +18,11 @@ export default function Home() {
       console.log(err)
       throw new Error('Paypal SDK could not be loaded.');
     };
-
     document.body.appendChild(script);
-  };
 
-  React.useEffect(() => {
-      addPaypalSdk();
-
-      return () => {
-        document.body.removeChild(script);
-      }  
+    return () => {
+      document.body.removeChild(script);
+    }  
   }, [])
 
   return (
