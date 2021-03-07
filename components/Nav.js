@@ -9,7 +9,7 @@ export default function Nav({hidden}) {
 
     return (
         <nav className={`${getHidden()} md:flex md:justify-between` }>
-            <ul className="md:pl-6 md:flex md:justify-between md:space-x-10">
+            <ul className="md:pl-8 md:flex md:justify-between md:space-x-8">
                 <li>
                     <Link href='/'>Home</Link>
                 </li>
@@ -35,7 +35,7 @@ export default function Nav({hidden}) {
 
             <ul className="md:flex md:justify-between md:space-x-4">
                 <li>
-                    <Link href='/login'>Login</Link>
+                    <Link href='/auth/login'>Login</Link>
                 </li>
                 <li className="flex justify-center">
                     <Link href='/cart'>
