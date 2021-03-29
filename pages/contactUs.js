@@ -1,8 +1,6 @@
 
 export default function Contact() {
-    
     return (<>
-        
         <h1 className='mt-6 text-center'>Let's Chat</h1>
 
         <div className="lg:w-5/12 md:6/12 w-10/12 m-auto my-10">
@@ -12,11 +10,11 @@ export default function Contact() {
             </div>
             <div className="my-5 text-sm">
                 <label htmlFor="email" className="block text-white">Email*</label>
-                <input type="text" autoFocus id="email" className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-600 w-full" placeholder="jon@doe.com" />
+                <input type="text" id="email" className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-600 w-full" placeholder="jon@doe.com" />
             </div>
             <div className="my-5 text-sm">
                 <label htmlFor="textBox" className="block text-white">How can we help?*</label>
-                <textarea type="text" autoFocus id="textBox" className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-600 w-full" placeholder="What can we do for you?" />
+                <textarea type="text" id="textBox" className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-600 w-full" placeholder="What can we do for you?" />
             </div>
 
             <div>
